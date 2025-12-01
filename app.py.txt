@@ -1,0 +1,49 @@
+# Define a Player class
+class Player:
+    def __init__(self, name, position, skill_level):
+        self.name = name
+        self.position = position
+        self.skill_level = skill_level
+
+    def __str__(self):
+        return f"{self.name} ({self.position}, Skill: {self.skill_level})"
+
+
+# Define a Team class
+class Team:
+    def __init__(self, team_name):
+        self.team_name = team_name
+        self.players = []
+
+    def add_player(self, player):
+        self.players.append(player)
+
+    def show_team(self):
+        print(f"\nTeam: {self.team_name}")
+        for player in self.players:
+            print(player)
+
+    def average_skill(self):
+        if not self.players:
+            return 0
+        return sum(p.skill_level for p in self.players) / len(self.players)
+
+
+# Example usage
+if __name__ == "__main__":
+    # Create players
+    p1 = Player("Sujal", "Forward", 85)
+    p2 = Player("Alex", "Midfielder", 78)
+    p3 = Player("Riya", "Defender", 82)
+    p4 = Player("Sam", "Goalkeeper", 90)
+
+    # Create a team and add players
+    my_team = Team("Galaxy Warriors")
+    my_team.add_player(p1)
+    my_team.add_player(p2)
+    my_team.add_player(p3)
+    my_team.add_player(p4)
+
+    # Show team details
+    my_team.show_team()
+    print(f"\nAverage Skill Level: {my_team.average_skill():.2f}")
